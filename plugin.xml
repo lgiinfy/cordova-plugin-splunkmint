@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="cordova-customplugin-splunkmint" version="1.0.3">
+        <name>cordova_splunkMint</name>
+        <description>Cordova_SplunkMint Plugin</description>
+        <license>Apache 2.0</license>
+        <keywords>cordova,splunk mint</keywords>
+        <js-module src="www/Cordova_SplunkMint.js" name="Cordova_SplunkMint">
+            <clobbers target="Cordova_SplunkMint" />
+        </js-module>
+    
+        <platform name="ios">
+            <framework src="SystemConfiguration.framework" />
+            <framework src="CoreTelephony.framework" />
+            <framework src="WebKit.framework" />
+            <framework src="QuartzCore.framework" />
+            <framework src="libz.dylib" />
+            
+            <framework src="src/ios/SplunkMint.framework" custom="true" />
+            
+            
+            <!-- Changing call for SplunkMint include
+            <source-file src="src/ios/SplunkMint.framework" framework="true" custom="true"/>
+            -->
+            
+            <config-file target="config.xml" parent="/*">
+                <feature name="Cordova_SplunkMint">
+                    <param name="ios-package" value="Cordova_SplunkMint" />
+                    <param name="onload" value="true" />
+                </feature>
+            </config-file>
+
+            <header-file src="src/ios/Cordova_SplunkMint.h" />
+            <source-file src="src/ios/Cordova_SplunkMint.m" />-->
+        </platform>
+
+        <platform name="android">
+            <config-file target="config.xml" parent="/*">
+                <feature name="Cordova_SplunkMint">
+                    <param name="android-package" value="com.customplugin.tracking.Cordova_SplunkMint" />
+                </feature>
+            </config-file>
+            <source-file src="src/android/Cordova_SplunkMint.java" target-dir="src/com/customplugin/tracking" />
+            <source-file src="src/android/mint-android-sdk-5.2.1.jar" target-dir="libs" framework="true" />
+        </platform>
+
+    </plugin>
